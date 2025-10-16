@@ -1,0 +1,212 @@
+/* ========== FONTS & RESET ========== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #07060a;
+  color:#e6eef7;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+  line-height:1.5;
+}
+
+/* ========== THEME VARS ========== */
+:root{
+  --bg:#07060a;
+  --glass-bg:rgba(255,255,255,0.04);
+  --glass-border:rgba(255,255,255,0.06);
+  --accent1:#7c5cff; /* roxo */
+  --accent2:#2fd4ff; /* cyan */
+  --muted:#a9b3c7;
+  --glass-blur:8px;
+  --card-radius:14px;
+  --max-width:1100px;
+}
+
+/* ========== ANIMATED BACKGROUND ========== */
+.bg-gradient{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background: radial-gradient(600px 400px at 10% 20%, rgba(124,92,255,0.12), transparent 10%),
+              radial-gradient(500px 400px at 90% 80%, rgba(47,212,255,0.10), transparent 12%),
+              linear-gradient(180deg, rgba(7,6,10,1) 0%, rgba(3,5,12,1) 100%);
+  filter:blur(60px);
+  transform:translateZ(0);
+  animation: bgmove 18s linear infinite alternate;
+}
+@keyframes bgmove{
+  0%{transform:translateY(0) scale(1)}
+  100%{transform:translateY(30px) scale(1.03)}
+}
+
+/* ========== CONTAINER ========== */
+.container{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:3.2rem 1.5rem 6rem;
+}
+
+/* ========== NAVBAR ========== */
+.nav{
+  position:sticky;
+  top:16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  z-index:50;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:0.85rem;
+}
+.logo-circle{
+  width:54px;height:54px;border-radius:12px;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  box-shadow:0 8px 30px rgba(47,212,255,0.08), inset 0 -8px 20px rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.06);
+}
+.brand-text .name{display:block;font-weight:700;font-size:1.05rem}
+.brand-text .role{display:block;color:var(--muted);font-size:0.75rem;margin-top:2px}
+
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{
+  text-decoration:none;color:var(--muted);padding:0.5rem 0.6rem;border-radius:8px;font-size:0.95rem;
+}
+.nav-links a:hover{color:var(--accent2);transform:translateY(-2px)}
+.btn-cv{
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#071018;padding:0.55rem 0.8rem;border-radius:10px;font-weight:600;
+  box-shadow:0 6px 18px rgba(124,92,255,0.12);
+}
+
+/* ========== RESPONSIVE NAV TOGGLE (small screens) ========== */
+.nav-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:1.2rem}
+@media (max-width:880px){
+  .nav-links{display:none}
+  .nav-toggle{display:inline-block}
+}
+
+/* ========== GLASS CARD ========== */
+.card-glass{
+  background:var(--glass-bg);
+  border:1px solid var(--glass-border);
+  border-radius:var(--card-radius);
+  padding:1.6rem;
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+}
+
+/* ========== SECTIONS ========== */
+.section{margin:2.4rem 0}
+.section h2{text-align:center;color:var(--accent1);margin:0 0 1rem;font-size:1.6rem}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap:2rem;
+  align-items:center;
+  padding:2.2rem;
+}
+.hero-left h1{font-size:2.2rem;margin:0 0 0.5rem}
+.hero-left .accent{background:linear-gradient(90deg,var(--accent1),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);margin:0.6rem 0 1rem;max-width:54ch}
+
+.hero-actions{display:flex;gap:0.8rem;align-items:center;margin-top:0.8rem}
+.btn{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  text-decoration:none;border:0;padding:0.65rem 0.95rem;border-radius:10px;font-weight:600;cursor:pointer;
+  transition:all .22s ease;
+}
+.btn.primary{
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#051023; box-shadow:0 10px 30px rgba(124,92,255,0.12); border: none;
+}
+.btn.primary:hover{transform:translateY(-4px)}
+.btn.outline{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)
+}
+
+/* badges */
+.badges{display:flex;gap:0.6rem;margin-top:1rem;flex-wrap:wrap}
+.badges span{
+  background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding:0.45rem 0.6rem;border-radius:8px;color:var(--muted);font-weight:600;font-size:0.85rem;border:1px solid rgba(255,255,255,0.02)
+}
+
+/* profile card */
+.profile-card{
+  text-align:center;padding:1.2rem;border-radius:12px;display:flex;flex-direction:column;align-items:center;gap:0.6rem;
+}
+.profile-photo{
+  width:120px;height:120px;border-radius:999px;border:4px solid rgba(255,255,255,0.06);
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  box-shadow:0 10px 30px rgba(124,92,255,0.12);transform:translateY(-14px);
+}
+.profile-card h3{margin:0;margin-top:-6px}
+.mini{color:var(--muted);font-size:0.9rem;margin:0}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 320px;gap:1.2rem;align-items:start}
+.about-list{list-style:none;color:var(--muted);padding-left:0}
+.about-list li{padding:0.4rem 0}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.skill{display:flex;flex-direction:column;align-items:center;padding:1rem;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+.skill .icon{font-size:1.6rem;margin-bottom:0.6rem}
+.skill strong{margin-bottom:0.2rem}
+
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.project{display:flex;gap:0.9rem;align-items:stretch;padding:0;border-radius:12px;overflow:hidden}
+.proj-media{width:140px;background:linear-gradient(135deg,var(--accent1),var(--accent2));min-height:120px;flex-shrink:0}
+.proj-body{padding:1rem;display:flex;flex-direction:column;gap:0.6rem}
+.proj-tags{display:flex;gap:0.4rem;flex-wrap:wrap}
+.proj-tags span{font-size:0.75rem;padding:0.28rem 0.46rem;border-radius:8px;background:rgba(0,0,0,0.25);color:var(--muted)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:1rem;align-items:start}
+.contact-form label{display:block;color:var(--muted);font-size:0.9rem;margin-bottom:0.5rem}
+.contact-form input,.contact-form textarea{
+  width:100%;padding:0.65rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted)
+}
+.form-actions{display:flex;gap:0.6rem;margin-top:0.6rem;align-items:center}
+.form-note{font-size:0.8rem;color:var(--muted);margin-top:0.6rem}
+
+/* CONTACT INFO */
+.info-card{padding:1rem;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+.info-card ul{list-style:none;padding-left:0;margin-top:0.6rem}
+.info-card a{color:var(--accent2);text-decoration:none}
+
+/* FOOTER */
+.footer{text-align:center;color:var(--muted);margin-top:2rem;padding:1.2rem}
+
+/* ========== MODAL ========== */
+.modal{position:fixed;inset:0;background:rgba(4,6,10,0.6);display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:all .25s ease}
+.modal.open{opacity:1;pointer-events:auto}
+.modal-card{width:min(720px,95%);padding:1.2rem;position:relative}
+.modal-close{position:absolute;right:1rem;top:1rem;background:transparent;border:0;color:var(--muted);font-size:1.1rem}
+
+/* ========== REVEAL ANIMATIONS ========== */
+.reveal{opacity:0;transform:translateY(18px) scale(0.995);transition:opacity .6s ease, transform .6s cubic-bezier(.18,.9,.32,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ========== SMALL SCREENS ========== */
+@media (max-width:880px){
+  .hero{grid-template-columns:1fr; padding:1.2rem}
+  .about-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr}
+  .profile-photo{width:96px;height:96px}
+  .nav{gap:0.6rem;padding-bottom:0.6rem}
+}
